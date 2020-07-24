@@ -31,6 +31,19 @@ def dojobs():
     fo.close()
     return num
 
+@app.route('/makejob',methods = ['GET'])
+#@limit_content_length(500 * 1024 * 1024)
+def makejob():
+    if request.method == 'GET':
+        print('queeryd')
+        fo = open("needpoints.txt", "w")
+        fo.write(request.args.get('points'))
+        fo.close()
+        fo = open("dojobs.txt", "w")
+        fo.write('1')
+        fo.close()
+        return jsonify( { 'msg': 'okay' } )
+
 @app.route('/')
 def index():
     fo = open("lastnum.txt", "r")
