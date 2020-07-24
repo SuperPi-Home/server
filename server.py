@@ -49,7 +49,17 @@ def index():
     fo = open("lastnum.txt", "r")
     num = fo.read()
     fo.close()
-    return render_template("list.html", num=num)
+    fo = open("needpoints.txt", "r")
+    num1 = fo.read()
+    fo.close()
+    fo = open("dojobs.txt", "r")
+    num2 = int(fo.read())
+    fo.close()
+    if(num2):
+        num2 = "是"
+    else:
+        num2 = "否"
+    return render_template("list.html", num=num, num1=num1, num2=num2)
 
 if (__name__ == "__main__"):
     app.run(host = '0.0.0.0', port = 8083)
