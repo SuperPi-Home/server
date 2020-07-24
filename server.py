@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from functools import wraps
 from flask import Flask,render_template,request,jsonify
 
 app = Flask(__name__)
@@ -37,12 +38,43 @@ def makejob():
     if request.method == 'GET':
         print('queeryd')
         fo = open("needpoints.txt", "w")
-        fo.write(request.args.get('points'))
+        fo.write(request.args.get('num'))
         fo.close()
         fo = open("dojobs.txt", "w")
         fo.write('1')
         fo.close()
-        return jsonify( { 'msg': 'okay' } )
+    
+    fo = open("lastnum.txt", "r")
+    num = fo.read()
+    fo.close()
+    fo = open("needpoints.txt", "r")
+    num1 = fo.read()
+    fo.close()
+    fo = open("dojobs.txt", "r")
+    num2 = int(fo.read())
+    fo.close()
+    if(num2):
+        num2 = "是"
+    else:
+        num2 = "否"
+    return render_template("makejobok.html", num=num, num1=num1, num2=num2)
+
+@app.route('/admin')
+def admin():
+    fo = open("lastnum.txt", "r")
+    num = fo.read()
+    fo.close()
+    fo = open("needpoints.txt", "r")
+    num1 = fo.read()
+    fo.close()
+    fo = open("dojobs.txt", "r")
+    num2 = int(fo.read())
+    fo.close()
+    if(num2):
+        num2 = "是"
+    else:
+        num2 = "否"
+    return render_template("admin.html", num=num, num1=num1, num2=num2)
 
 @app.route('/')
 def index():

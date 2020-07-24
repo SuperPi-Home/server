@@ -1,20 +1,22 @@
-<!-- list.html -->
+<!-- admin.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SuperPi@Home</title>
+    <title>SuperPi@Home - AdminUI</title>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mdui@1.0.0/dist/css/mdui.min.css"/>
     <script src="//cdn.jsdelivr.net/npm/mdui@1.0.0/dist/js/mdui.min.js"></script>
 </head>
 <body>
     <div class="mdui-container">
-    <h1 align="center">SuperPi@Home WebUI</h1>
-    <button onclick="window.open('https://superpi-home.github.io/client/')" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">加入计算</button>
+    <h1 align="center">SuperPi@Home WebUI - AdminUI</h1>
     <p>最新小数点位数:{{num1}}</p>
     <p>是否正在计算:{{num2}}</p>
-      <div class="mdui-textfield">
-        <textarea class="mdui-textfield-input" placeholder="圆周率" disabled>{{num}}</textarea>
-      </div>
+    <h3>发起job</h3>
+    <form method="get" action="/makejob">
+    目标小数点位数:<input type="text" name="num" id="num" class="mdui-textfield-input" />
+    <br/>
+    <input type="submit" value="提交" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" />
+    </form>
     <br/>
     <div class="mdui-divider"></div>
     <p>感谢志愿者们提供算力支持</p>
