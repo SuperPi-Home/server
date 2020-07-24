@@ -37,12 +37,13 @@ def dojobs():
 def makejob():
     if request.method == 'GET':
         print('queeryd')
-        fo = open("needpoints.txt", "w")
-        fo.write(request.args.get('num'))
-        fo.close()
-        fo = open("dojobs.txt", "w")
-        fo.write('1')
-        fo.close()
+        if str(request.args.get('pwd')) == "PASSWORDHERE":
+            fo = open("needpoints.txt", "w")
+            fo.write(request.args.get('num'))
+            fo.close()
+            fo = open("dojobs.txt", "w")
+            fo.write('1')
+            fo.close()
     
     fo = open("lastnum.txt", "r")
     num = fo.read()

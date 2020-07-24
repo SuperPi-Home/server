@@ -9,16 +9,30 @@
 <body>
     <div class="mdui-container">
     <h1 align="center">SuperPi@Home WebUI</h1>
-    <button onclick="window.open('https://superpi-home.github.io/client/')" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">加入计算</button>
+    <button onclick="window.open('https://superpi-home.github.io/client/')" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">加入SuperPi@Home</button>
     <p>最新小数点位数:{{num1}}</p>
     <p>是否正在计算:{{num2}}</p>
       <div class="mdui-textfield">
-        <textarea class="mdui-textfield-input" placeholder="圆周率" disabled>{{num}}</textarea>
+        <textarea id="paicontent" class="mdui-textfield-input" placeholder="圆周率" disabled>{{num}}</textarea>
       </div>
+    
+    <input id="pai" type="text" value="{{num}}" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;width:0;height:0;"/>
     <br/>
     <div class="mdui-divider"></div>
     <p>感谢志愿者们提供算力支持</p>
     <p>Powerd By SuperPi@Home Devolpers</p>
     </div>
+<script>
+    function copy(id) {
+    　　var clipboard = new Clipboard(id);
+    　　clipboard.on('success', function(e){
+    　　　　alert("复制成功！");
+    　　　　//可执行其他代码操作
+    　　});
+    　　clipboard.on('error', function(e){
+    　　　　alert("复制失败！请手动复制")
+    　　});
+    }
+</script>
 </body>
 </html>
