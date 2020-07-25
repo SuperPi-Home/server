@@ -77,6 +77,23 @@ def admin():
         num2 = "否"
     return render_template("admin.html", num=num, num1=num1, num2=num2)
 
+@app.route('/eng')
+def eng():
+    fo = open("lastnum.txt", "r")
+    num = fo.read()
+    fo.close()
+    fo = open("needpoints.txt", "r")
+    num1 = fo.read()
+    fo.close()
+    fo = open("dojobs.txt", "r")
+    num2 = int(fo.read())
+    fo.close()
+    if(num2):
+        num2 = "Yes"
+    else:
+        num2 = "No"
+    return render_template("listeng.html", num=num, num1=num1, num2=num2)
+
 @app.route('/')
 def index():
     fo = open("lastnum.txt", "r")
